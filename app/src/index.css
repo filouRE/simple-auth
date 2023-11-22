@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::selection {
+  background-color: rgb(92, 137, 142);
+  color: azure;
+}
