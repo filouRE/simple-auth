@@ -45,7 +45,6 @@ export async function createUser(
     const passwordValidation =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d.@#$!%*?&])[a-zA-Z\d.@#$!%*?&]{8,96}$/;
 
-    const userUUID = crypto.randomUUID();
     const time = new Date(Date.now());
 
     const checkUsername = await sql`
@@ -75,11 +74,15 @@ export async function createUser(
 
     // create user request
     const users = await sql`
-  INSERT INTO users (uuid, username, password, email, accountcreation)
-  VALUES (${userUUID}, ${username}, ${bcryptHash}, ${email}, ${time.toUTCString()});
-`;
-    console.log(users);
-    return { uuid: userUUID, username };
+    INSERT INTO users (uuid, username, password, email, accountcreation)
+    VALUES (gen_random_uuid(), ${username}, ${bcryptHash}, ${email}, ${time.toUTCString()});
+  `;
+
+    const uuid = await sql`
+      SELECT uuid FROM users WHERE username = ${username}
+    `;
+
+    return { uuid: uuid[0].uuid, username };
 }
 
 export async function checkUserData(username: string, uuid: string) {
