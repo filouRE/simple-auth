@@ -54,6 +54,13 @@ function App(props) {
                     <h1 className="font-bold text-[8rem]">WELCOME</h1>
                     {connect ? (
                         <div className="flex gap-4">
+                            {" "}
+                            <a
+                                href="/test"
+                                className=" bg-[#D9D9D9] text-2xl rounded-full px-16 py-1 font-semibold"
+                            >
+                                Go to test page
+                            </a>
                             <a
                                 href="/home"
                                 className=" bg-[#D9D9D9] text-2xl rounded-full px-16 py-1 font-semibold"
