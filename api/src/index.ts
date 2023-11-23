@@ -2,12 +2,12 @@ import { getUser, createUser, checkUserData } from "./users";
 import { Elysia, t } from "elysia";
 import { cors } from "@elysiajs/cors";
 
-const WEBSITE_CORS: any = Bun.env.WEBSITE_CORS;
+const WEBSITE_ALLOW_CORS: any = Bun.env.WEBSITE_ALLOW_CORS;
 
 export const app = new Elysia()
     .use(
         cors({
-            origin: WEBSITE_CORS,
+            origin: WEBSITE_ALLOW_CORS,
         })
     )
     .post("/auth/signin", ({ body }) => getUser(body.username, body.password), {

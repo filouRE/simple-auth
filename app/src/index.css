@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 *::selection {
-  background-color: rgb(92, 137, 142);
-  color: azure;
+    background-color: rgb(92, 137, 142);
+    color: azure;
 }
