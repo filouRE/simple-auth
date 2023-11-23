@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import Home from "./Home.jsx";
 import "./index.css";
 import Test from "./Test.jsx";
+import PageNotFound from "./PageNotFound.jsx";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     {
         path: "/test",
         element: <CheckLogin component={<Test />} />,
+    },
+    {
+        path: "*",
+        element: <PageNotFound />,
     },
 ]);
 
